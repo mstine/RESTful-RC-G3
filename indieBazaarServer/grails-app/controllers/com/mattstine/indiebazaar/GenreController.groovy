@@ -8,9 +8,10 @@ class GenreController {
     def genre = Genre.get(params.id)
 
     render(contentType: "text/json") {
-      for (artist in genre.artists) {
-        id = artist.id
-        name = artist.name
+      artists = array {
+        for (artist in genre.artists) {
+          anArtist id:artist.id, name:artist.name
+        }
       }
     }
   }
