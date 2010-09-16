@@ -2,6 +2,8 @@ import com.mattstine.indiebazaar.Genre
 import com.mattstine.indiebazaar.Artist
 import com.mattstine.indiebazaar.Album
 import com.mattstine.indiebazaar.Song
+import com.mattstine.indiebazaar.Customer
+import com.mattstine.indiebazaar.Library
 
 class BootStrap {
 
@@ -45,7 +47,11 @@ class BootStrap {
       new Song(title:"Row Bombard Intrusion 248", album:Album.findByTitle("Computers Are Lousy Actors")).save()
       new Song(title:"Earth Over Monday Forever", album:Album.findByTitle("Computers Are Lousy Actors")).save()
       new Song(title:"Toddler If Nestling", album:Album.findByTitle("Computers Are Lousy Actors")).save()
-      
+
+      def emptyLibrary = new Library().save()
+      new Customer(username:"jsmith", password:"password",
+                   email:"john.smith@fakeemail.com", library:emptyLibrary).save()
+
     }
     def destroy = {
     }
